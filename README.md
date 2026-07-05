@@ -1,8 +1,10 @@
 # Crescent
 
-Crescent is a web portal built to showcase the culture, traditions, and heritage of different cities across India. The goal of the project is to present each city's identity through a structured, data-driven experience, covering aspects such as food, festivals, language, art, architecture, and history.
+Crescent is a web experience built to showcase the diverse cultures, traditions, heritage, food, and history of different cities across India. The objective of this project is to present each city's unique identity through an immersive, highly tailored presentation. 
 
-For the initial version, the following cities were included:
+Rather than using a generic template, every city on the website is treated as its own individual experience. This means that each page features its own specific design, custom typography, layout structure, and curated color scheme reflecting the spirit of that city.
+
+For the initial version, the following 12 cities are featured:
 
 - Ahmedabad
 - Amritsar
@@ -17,120 +19,114 @@ For the initial version, the following cities were included:
 - Mysuru
 - Varanasi
 
-Each city is represented through its own dedicated page with cultural content sourced and structured from the backend.
+---
+
+> **Important Notice**
+>
+> This repository is an incomplete showcase designed exclusively for demonstration purposes. It contains the folder architecture, build configurations, and stubbed source code representing the layout of the project. The actual fully functioning codebase, visual graphics, customized scrollytelling components, database schemas, and proprietary logic are kept in a separate private repository.
 
 ---
 
-## Note
+## Technical Project Details
 
-This repository is a partial showcase of the project. It contains the folder structure, configuration files, and architectural overview of the codebase. The actual implementation files, UI components, visual design, and data logic are kept in a private repository.
-
-The full project is private and not publicly available.
+| Metric | Detail |
+|---|---|
+| Start Date | 8 May 2026 |
+| End Date | 21 May 2026 |
+| Duration | Approximately 2 weeks |
+| Total Commits | 24 commits |
 
 ---
 
-## Project Details
+## Technical Optimizations and Improvements
 
-| Detail         | Value                        |
-|----------------|------------------------------|
-| Start Date     | 8 May 2026                   |
-| End Date       | 21 May 2026                  |
-| Duration       | Approximately 2 weeks        |
-| Total Commits  | 24                           |
+The codebase underwent multiple rounds of optimization to ensure high performance, security, and a seamless user experience.
+
+### 1. Performance and Rendering Optimizations
+- **Dynamic Lazy Loading**: Enabled code-splitting for scrollytelling pages and the interactive map component to prevent heavy initial assets from blocking the main thread.
+- **Vite Bundler Adjustments**: Implemented manual vendor code splitting and adjusted asset chunk size limits to optimize dependency loading.
+- **Image Optimization**: Migrated raster images to WebP format to decrease load times without sacrificing visual clarity.
+- **GSAP Animation Tuning**: Resolved delay warnings and render overheads to guarantee smooth, hardware-accelerated animations across all devices.
+
+### 2. Backend and Data Optimizations
+- **Payload Reduction**: Scaled down API payloads by returning only necessary data fields.
+- **Caching Headers**: Configured custom HTTP cache headers to decrease server requests for static cultural information.
+- **Validation**: Added slug validation on request inputs to handle API errors cleanly.
+- **Database Connection Flex**: Refactored MongoDB configuration to support dynamic DSN database connection strings.
+
+### 3. Localization and Global Support
+- **Internationalization**: Configured multi-language routing for English (EN) and German (DE) languages using the i18next library.
+
+### 4. Infrastructure and Deployment
+- **Edge-Based Maintenance Mode**: Built a zero-downtime, no-redeploy maintenance mode. It checks a site-lock variable using Vercel Edge Config inside an edge middleware function before loading the page.
+- **Vercel Rewrites**: Configured custom URL redirect rules to prevent 404 errors during page refreshes on single-page routes.
+
+### 5. SEO and Accessibility Audits
+- **Metadata Management**: Wrapped the application context inside React Helmet Async to handle unique page titles and meta descriptions dynamically.
+- **Semantic Structure**: Refactored page layouts using proper HTML5 tags to ensure full accessibility and SEO crawler compliance.
 
 ---
 
 ## Tech Stack
 
 ### Backend
-
-| Layer          | Technology                        |
-|----------------|-----------------------------------|
-| Framework      | Laravel 12 (PHP 8.2)              |
-| Database       | MongoDB (via laravel-mongodb 5.x) |
-| API            | RESTful API                       |
-| Runtime        | PHP-FPM with Docker               |
-| Testing        | PHPUnit 11                        |
+- **Framework**: Laravel 12 (PHP 8.2)
+- **Database**: MongoDB (via laravel-mongodb integration)
+- **API Architecture**: RESTful API endpoints
+- **Environment**: Docker (PHP-FPM and Apache configuration)
+- **Testing**: PHPUnit 11
 
 ### Frontend
-
-| Layer          | Technology                        |
-|----------------|-----------------------------------|
-| Framework      | React 19 (with Vite)              |
-| Routing        | React Router DOM 7                |
-| Animation      | GSAP 3, Framer Motion 12          |
-| Localization   | i18next (EN / DE)                 |
-| HTTP Client    | Axios                             |
-| Deployment     | Vercel                            |
-
-### Infrastructure
-
-| Layer          | Technology                        |
-|----------------|-----------------------------------|
-| Containerization | Docker                          |
-| Edge Config    | Vercel Edge Config (maintenance mode) |
+- **Library**: React 19 (Vite build system)
+- **Routing**: React Router DOM 7
+- **Animations**: GSAP (GreenSock Animation Platform) and Framer Motion
+- **Localization**: i18next translation suite
+- **HTTP client**: Axios
 
 ---
 
 ## Repository Structure
+
+Below is an overview of how the files and directories are organized in the original private repository:
 
 ```
 crescent/
 ├── backend/                  # Laravel API server
 │   ├── app/
 │   │   ├── Http/
-│   │   │   ├── Controllers/  # API route handlers
-│   │   │   └── Middleware/   # Request middleware
-│   │   ├── Models/           # Eloquent/MongoDB models
-│   │   └── Providers/        # Service providers
+│   │   │   ├── Controllers/  # Route controllers (City & State)
+│   │   │   └── Middleware/   # CORS and custom middleware
+│   │   ├── Models/           # MongoDB Eloquent models
+│   │   └── Providers/        # Bootstrapping service providers
 │   ├── database/
-│   │   ├── migrations/       # Database schema migrations
-│   │   ├── seeders/          # Seed data for cities and states
-│   │   └── factories/        # Model factories for testing
-│   ├── routes/               # API and web route definitions
-│   ├── config/               # Laravel configuration files
-│   ├── Dockerfile            # Backend container definition
-│   └── composer.json         # PHP dependencies
+│   │   ├── migrations/       # Schema files
+│   │   └── seeders/          # Database seeding scripts
+│   ├── routes/               # API route declarations
+│   ├── Dockerfile            # Container builder file
+│   └── composer.json         # PHP dependencies list
 │
-└── frontend/                 # React SPA
+└── frontend/                 # React frontend
     ├── src/
-    │   ├── pages/            # Page-level components (one per route)
-    │   ├── components/       # Reusable UI components
-    │   ├── hooks/            # Custom React hooks
-    │   ├── utils/            # Utility functions
-    │   ├── data/             # Static data files
-    │   ├── App.jsx           # Root component with routing
-    │   └── main.jsx          # Application entry point
-    ├── public/               # Static assets
-    ├── index.html            # HTML entry point
-    ├── package.json          # JS dependencies
-    └── vite.config.js        # Vite build configuration
+    │   ├── pages/            # Page layouts
+    │   ├── components/       # UI building blocks (Map, Scrollytelling, Layouts)
+    │   ├── hooks/            # Custom application hooks
+    │   ├── utils/            # Helper functions
+    │   ├── App.jsx           # Router wrapper
+    │   └── main.jsx          # JS root mount
+    ├── package.json          # Node dependencies list
+    └── vite.config.js        # Bundler configuration file
 ```
 
 ---
 
-## Architecture Overview
+## Backend API Specification
 
-The project follows a decoupled architecture where the frontend and backend are independent services.
-
-The backend exposes a REST API built with Laravel. It connects to a MongoDB database that stores cultural content for each city and state. Data is served through dedicated controllers for cities and states, with CORS handled via middleware.
-
-The frontend is a React single-page application. It fetches data from the API at runtime and renders it through page components. Each city has a dedicated page that displays cultural details. The application supports two languages, English and German, using i18next. Animations across the portal use GSAP and Framer Motion. The site is deployed on Vercel.
-
-Maintenance mode is managed without redeployment using Vercel Edge Config, which allows toggling site availability through a remote flag.
+| Endpoint | Method | Purpose |
+|---|---|---|
+| `/api/cities` | GET | Returns a collection of all cities with basic details. |
+| `/api/cities/{slug}` | GET | Returns a single city's cultural, architectural, and historical data. |
+| `/api/states` | GET | Returns a collection of states mapping to the cities. |
 
 ---
 
-## Backend API Endpoints
-
-| Method | Endpoint            | Description                        |
-|--------|---------------------|------------------------------------|
-| GET    | /api/cities         | Returns a list of all cities       |
-| GET    | /api/cities/{slug}  | Returns details for a single city  |
-| GET    | /api/states         | Returns a list of all states       |
-
----
-
-## Contact
-
-This project is part of a personal portfolio. For any questions or collaboration, please reach out through the repository profile.
+Thank you for reading till here.
