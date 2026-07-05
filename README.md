@@ -4,6 +4,9 @@ Crescent is a web experience built to showcase the diverse cultures, traditions,
 
 Rather than using a generic template, every city on the website is treated as its own individual experience. This means that each page features its own specific design, custom typography, layout structure, and curated color scheme reflecting the spirit of that city.
 
+It took two to three days to name this project. The name Crescent is inspired by the phases of the moon, representing a stage when only a small portion of the moon is visible. Similarly, this project showcases only a small part of the vast culture and heritage of India.
+
+
 For the initial version, the following 12 cities are featured:
 
 - Ahmedabad
@@ -140,7 +143,4 @@ The codebase underwent multiple rounds of optimization to ensure high performanc
 | `/api/cities` | GET | Returns a collection of all cities with basic details. |
 | `/api/cities/{slug}` | GET | Returns a single city's cultural, architectural, and historical data. |
 | `/api/states` | GET | Returns a collection of states mapping to the cities. |
-
-<br />
-
 <h2 align="center">Thank you for reading till here.</h2>
