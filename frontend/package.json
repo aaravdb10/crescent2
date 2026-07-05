@@ -1,0 +1,32 @@
+{
+  "name": "crescent-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@gsap/react": "^2.1.2",
+    "@svg-maps/india": "^2.0.0",
+    "@vercel/edge-config": "^1.4.3",
+    "axios": "^1.16.0",
+    "framer-motion": "^12.38.0",
+    "gsap": "^3.15.0",
+    "i18next": "^26.0.10",
+    "i18next-browser-languagedetector": "^8.2.1",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-helmet-async": "^3.0.0",
+    "react-i18next": "^17.0.7",
+    "react-router-dom": "^7.14.2"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^10.2.1",
+    "vite": "^8.0.10"
+  }
+}
