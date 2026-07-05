@@ -129,4 +129,7 @@ crescent/
 
 ---
 
-Thank you for reading till here.
+<br />
+
+<h2 align="center">Thank you for reading till here.</h2>
+
